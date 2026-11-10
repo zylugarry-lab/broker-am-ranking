@@ -57,7 +57,8 @@ function render() {
   empty.hidden = true;
   wrap.hidden = false;
   const nScale = data.rows.filter((r) => typeof r.scale[0] === "number").length;
-  sub.textContent = `${data.title} · 截至 ${data.asof} · 规模已披露 ${nScale}/49`;
+  const nIncome = data.rows.filter((r) => typeof r.income[0] === "number").length;
+  sub.textContent = `${data.title} · 截至 ${data.asof} · 规模 ${nScale}/49 · 收入 ${nIncome}/49${data.note ? " · " + data.note : ""}`;
   const head1 = [`<th class="g-id name" rowspan="2">券商名称</th>`];
   const head2 = [];
   for (const [key, title, cls] of GROUPS) {
